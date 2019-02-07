@@ -4,6 +4,11 @@
       <template slot="status" slot-scope="data">
         <b-badge :variant="getBadge(data.item.status)">{{data.item.status}}</b-badge>
       </template>
+
+      <template slot="nomeComUrl" slot-scope="data">
+        <b-link :to="{ name: 'Cliente', params: { id: data.item.idCliente }}">{{data.item.nome}}</b-link>
+      </template>
+
     </b-table>
     <nav>
       <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" prev-text="Prev" next-text="Next" hide-goto-end-buttons/>
@@ -81,7 +86,11 @@ export default {
     },
     getRowCount: function () {
       return this.items.length
+    },
+        clientePath: function() {
+        return `/clientes/123`;
     }
+
   }
 }
 </script>
