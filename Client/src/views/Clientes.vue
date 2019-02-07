@@ -1,0 +1,57 @@
+<template>
+  <div class="animated fadeIn">
+
+    <b-row>
+      <b-col lg="12">
+        <c-table :table-data="items" :fields="fields" :perPage="5" caption="<i class='fa fa-align-justify'></i> Clientes"></c-table>
+      </b-col>
+    </b-row><!--/.row-->
+
+  </div>
+
+</template>
+
+<script>
+/*
+  {username: 'Samppa Nori', registered: '2012/01/01', role: 'Member', status: 'Active', _rowVariant: 'success'},
+  {username: 'Estavan Lykos', registered: '2012/02/01', role: 'Staff', status: 'Banned', _rowVariant: 'danger'},
+  {username: 'Chetan Mohamed', registered: '2012/02/01', role: 'Admin', status: 'Inactive', _rowVariant: 'info'},
+  {username: 'Derick Maximinus', registered: '2012/03/01', role: 'Member', status: 'Pending'},
+  {username: 'Friderik Dávid', registered: '2012/01/21', role: 'Staff', status: 'Active'},
+  {username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
+  {username: 'Avram Tarasios', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
+*/
+import axios from 'axios';
+import cTable from './base/Table.vue'
+
+export default {
+  name: 'clientes',
+  components: {cTable},
+  data: () => {
+    return {
+      items: [],
+      fields: [
+        {key: 'nomeComUrl', label: 'Nome', sortable: true},
+        {key: 'telefone', sortable: true},
+        {key: 'ultimaConsulta', label: 'Última consulta', sortable: true},
+        {key: 'proximaConsulta', label: 'Próxima consulta', sortable: true}
+      ],
+    }
+  },
+  created: function() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: async function() {
+      try {
+        const res = await axios.get("http://localhost:8181/api/clientes/");
+        this.items = res.data;
+      } catch (e) {
+        alert('Ocorreu um erro ao obter a informação.');
+          // eslint-disable-next-line
+        console.error(e);
+      }
+    },
+  },
+}
+</script>
