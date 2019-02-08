@@ -43,14 +43,9 @@ export default {
   },
   methods: {
     fetchData: async function() {
-      try {
-        const res = await axios.get("http://localhost:8181/api/clientes/");
-        this.items = res.data;
-      } catch (e) {
-        alert('Ocorreu um erro ao obter a informação.');
-          // eslint-disable-next-line
-        console.error(e);
-      }
+      await axios.get("http://localhost:8181/api/clientes/")
+        .then(response => this.items = response.data)
+        .catch(error => alert('Ocorreu um erro ao obter a informação.'));
     },
   },
 }
