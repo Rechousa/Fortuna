@@ -41,7 +41,7 @@
                     <b-form-input type="text" id="vat" placeholder="PL1234567890" v-model="cliente.contribuinte"></b-form-input>
                   </b-form-group>
                   <b-form-group>
-                    <label for="vat">Covenção</label>
+                    <label for="vat">Convenção</label>
                     <b-form-input type="text" id="vat" placeholder="PL1234567890" v-model="cliente.convencao"></b-form-input>
                   </b-form-group>
                 </b-col>
