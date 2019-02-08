@@ -10,4 +10,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fortuna.Domain.Entities\Fortuna.Domain.Entities.csproj" />
+    <ProjectReference Include="..\Fortuna.Domain.Interfaces\Fortuna.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Fortuna.Infrastructure.Data\Fortuna.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Fortuna.Services.Interfaces\Fortuna.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\Fortuna.Services\Fortuna.Services.csproj" />
+  </ItemGroup>
+
 </Project>

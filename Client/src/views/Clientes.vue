@@ -32,9 +32,10 @@ export default {
       items: [],
       fields: [
         {key: 'nomeComUrl', label: 'Nome', sortable: true},
+        {key: 'morada', sortable: true},
         {key: 'telefone', sortable: true},
-        {key: 'ultimaConsulta', label: 'Última consulta', sortable: true},
-        {key: 'proximaConsulta', label: 'Próxima consulta', sortable: true}
+        {key: 'numeroContribuinte', label: 'Nr. Contribuinte', sortable: true},
+        {key: 'convencao', label: 'Convenção', sortable: true}
       ],
     }
   },

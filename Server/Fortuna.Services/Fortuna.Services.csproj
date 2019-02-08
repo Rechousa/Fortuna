@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fortuna.Domain.Interfaces\Fortuna.Domain.Interfaces.csproj" />
+    <ProjectReference Include="..\Fortuna.Services.Interfaces\Fortuna.Services.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
