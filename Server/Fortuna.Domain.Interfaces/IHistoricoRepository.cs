@@ -8,12 +8,12 @@ namespace Fortuna.Domain.Interfaces
     {
         Task<IEnumerable<Historico>> GetAll(int idCliente);
 
-        Task<Historico> Find(int id);
+        Task<Historico> Find(int idCliente, int id);
 
-        Task Add(Historico item);
+        Task Add(int idCliente, Historico item);
 
-        Task Update(Historico item);
+        Task Update(int idCliente, Historico item);
 
-        Task Remove(int id);
+        Task Remove(int idCliente, int id);
     }
 }

@@ -22,31 +22,32 @@ namespace Fortuna.Infrastructure.Data
             return Task.FromResult(historico.Where(t => t.IdCliente == idCliente));
         }
 
-        public Task<Historico> Find(int id)
+        public Task<Historico> Find(int idCliente, int id)
         {
-            return Task.FromResult(historico.FirstOrDefault(t => t.IdHistorico == id));
+            return Task.FromResult(historico.FirstOrDefault(t => t.IdCliente == idCliente && t.IdHistorico == id));
         }
 
-        public Task Add(Historico item)
+        public Task Add(int idCliente, Historico item)
         {
             item.IdHistorico = historico.Max(t => t.IdHistorico) + 1;
+            item.IdCliente = idCliente;
             historico.Add(item);
 
             return Task.FromResult(historico);
         }
 
-        public Task Update(Historico item)
+        public Task Update(int idCliente, Historico item)
         {
-            var record = historico.Single(t => t.IdHistorico == item.IdHistorico);
+            var record = historico.Single(t => t.IdCliente == idCliente && t.IdHistorico == item.IdHistorico);
             record.Descricao = item.Descricao;
             record.DataHora = DateTime.Now;
 
             return Task.CompletedTask;
         }
 
-        public Task Remove(int id)
+        public Task Remove(int idCliente, int id)
         {
-            historico.RemoveAll(t => t.IdHistorico == id);
+            historico.RemoveAll(t => t.IdCliente == idCliente && t.IdHistorico == id);
             return Task.CompletedTask;
         }
     }

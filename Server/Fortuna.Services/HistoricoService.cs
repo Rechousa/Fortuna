@@ -20,24 +20,24 @@ namespace Fortuna.Services
             return _repository.GetAll(idCliente);
         }
 
-        public Task<Historico> Find(int id)
+        public Task<Historico> Find(int idCliente, int id)
         {
-            return _repository.Find(id);
+            return _repository.Find(idCliente, id);
         }
 
-        public Task Add(Historico item)
+        public Task Add(int idCliente, Historico item)
         {
-            return _repository.Add(item);
+            return _repository.Add(idCliente, item);
         }
 
-        public Task Update(Historico item)
+        public Task Update(int idCliente, Historico item)
         {
-            return _repository.Update(item);
+            return _repository.Update(idCliente, item);
         }
 
-        public Task Remove(int id)
+        public Task Remove(int idCliente, int id)
         {
-            return _repository.Remove(id);
+            return _repository.Remove(idCliente, id);
         }
     }
 }
