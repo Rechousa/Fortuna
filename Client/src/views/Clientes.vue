@@ -1,14 +1,17 @@
 <template>
   <div class="animated fadeIn">
-
     <b-row>
       <b-col lg="12">
-        <c-table :table-data="items" :fields="fields" :perPage="5" caption="<i class='fa fa-align-justify'></i> Clientes"></c-table>
+        <c-table
+          :table-data="items"
+          :fields="fields"
+          :perPage="5"
+          caption="<i class='fa fa-align-justify'></i> Clientes"
+        ></c-table>
       </b-col>
-    </b-row><!--/.row-->
-
+    </b-row>
+    <!--/.row-->
   </div>
-
 </template>
 
 <script>
@@ -21,33 +24,38 @@
   {username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
   {username: 'Avram Tarasios', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
 */
-import axios from 'axios';
-import cTable from './base/Table.vue'
+import axios from "axios";
+import cTable from "./base/Table.vue";
 
 export default {
-  name: 'clientes',
-  components: {cTable},
+  name: "clientes",
+  components: { cTable },
   data: () => {
     return {
       items: [],
       fields: [
-        {key: 'nome', label: 'Nome', sortable: true},
-        {key: 'morada', sortable: true},
-        {key: 'telefone', sortable: true},
-        {key: 'numeroContribuinte', label: 'Nr. Contribuinte', sortable: true},
-        {key: 'convencao', label: 'Convenção', sortable: true}
-      ],
-    }
+        { key: "nome", label: "Nome", sortable: true },
+        { key: "morada", sortable: true },
+        { key: "telefone", sortable: true },
+        {
+          key: "numeroContribuinte",
+          label: "Nr. Contribuinte",
+          sortable: true
+        },
+        { key: "convencao", label: "Convenção", sortable: true }
+      ]
+    };
   },
   created: function() {
     this.fetchData();
   },
   methods: {
     fetchData: async function() {
-      await axios.get("http://localhost:8181/api/clientes/")
-        .then(response => this.items = response.data)
-        .catch(error => alert('Ocorreu um erro ao obter a informação.'));
-    },
-  },
-}
+      await axios
+        .get("http://localhost:8181/api/clientes/")
+        .then(response => (this.items = response.data))
+        .catch(error => alert("Ocorreu um erro ao obter a informação."));
+    }
+  }
+};
 </script>
