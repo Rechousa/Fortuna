@@ -29,7 +29,10 @@ namespace Fortuna.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IHistoricoRepository, HistoricoRepository>();
+
             services.AddTransient<IClienteService, ClienteService>();
+            services.AddTransient<IHistoricoService, HistoricoService>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
