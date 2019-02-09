@@ -19,7 +19,7 @@ import axios from "axios";
 import cTable from "./Table.vue";
 
 export default {
-  name: "clientes",
+  name: "ClienteTab2",
   components: { cTable },
   data: () => {
     return {

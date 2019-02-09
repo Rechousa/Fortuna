@@ -43,24 +43,30 @@
           </b-form-group>
         </b-col>
       </b-row>
-      <b-form-group>
-        <label for="country">Telefone</label>
-        <b-form-input
-          type="text"
-          id="country"
-          placeholder="Country name"
-          v-model="cliente.telefone"
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group>
-        <label for="vat">Nr. Contribuinte</label>
-        <b-form-input
-          type="text"
-          id="vat"
-          placeholder="PL1234567890"
-          v-model="cliente.contribuinte"
-        ></b-form-input>
-      </b-form-group>
+      <b-row>
+        <b-col sm="8">
+          <b-form-group>
+            <label for="country">Telefone</label>
+            <b-form-input
+              type="text"
+              id="country"
+              placeholder="Country name"
+              v-model="cliente.telefone"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+        <b-col sm="4">
+          <b-form-group>
+            <label for="vat">Nr. Contribuinte</label>
+            <b-form-input
+              type="text"
+              id="vat"
+              placeholder="PL1234567890"
+              v-model="cliente.contribuinte"
+            ></b-form-input>
+          </b-form-group>
+        </b-col>
+      </b-row>
       <b-form-group>
         <label for="vat">Convenção</label>
         <b-form-input type="text" id="vat" placeholder="PL1234567890" v-model="cliente.convencao"></b-form-input>
@@ -73,7 +79,7 @@
 import axios from "axios";
 
 export default {
-     name: "ClienteTab1",
+  name: "ClienteTab1",
   data: () => {
     return {
       cliente: {}
