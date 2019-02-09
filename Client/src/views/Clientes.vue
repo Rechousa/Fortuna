@@ -31,7 +31,7 @@ export default {
     return {
       items: [],
       fields: [
-        {key: 'nomeComUrl', label: 'Nome', sortable: true},
+        {key: 'nome', label: 'Nome', sortable: true},
         {key: 'morada', sortable: true},
         {key: 'telefone', sortable: true},
         {key: 'numeroContribuinte', label: 'Nr. Contribuinte', sortable: true},

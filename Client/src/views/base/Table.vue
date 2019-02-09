@@ -5,7 +5,7 @@
         <b-badge :variant="getBadge(data.item.status)">{{data.item.status}}</b-badge>
       </template>
 
-      <template slot="nomeComUrl" slot-scope="data">
+      <template slot="nome" slot-scope="data">
         <b-link :to="{ name: 'Cliente', params: { id: data.item.idCliente }}">{{data.item.nome}}</b-link>
       </template>
 
@@ -87,10 +87,6 @@ export default {
     getRowCount: function () {
       return this.items.length
     },
-        clientePath: function() {
-        return `/clientes/123`;
-    }
-
   }
 }
 </script>
