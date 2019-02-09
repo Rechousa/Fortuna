@@ -30,9 +30,11 @@ namespace Fortuna.Api
         {
             services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IHistoricoRepository, HistoricoRepository>();
+            services.AddTransient<IAlertaRepository, AlertaRepository>();
 
             services.AddTransient<IClienteService, ClienteService>();
             services.AddTransient<IHistoricoService, HistoricoService>();
+            services.AddTransient<IAlertaService, AlertaService>();
 
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
