@@ -13,12 +13,10 @@ namespace Fortuna.Domain.Entities
 
         public DateTime DataHora { get; set; }
 
-        public Alerta(int idAlerta, int idCliente, string descricao, DateTime dataHora)
+        public Alerta(int idCliente, string descricao)
         {
-            IdAlerta = idAlerta;
             IdCliente = idCliente;
             Descricao = descricao;
-            DataHora = dataHora;
         }
     }
 }
