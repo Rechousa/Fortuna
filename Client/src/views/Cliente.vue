@@ -32,22 +32,6 @@ import clientetab3 from "./base/ClienteTab3.vue";
 
 export default {
   name: "Cliente",
-  components: { clientetab1, clientetab2, clientetab3 },
-  data: () => {
-    return {
-      cliente: {}
-    };
-  },
-  created: function() {
-    this.fetchData();
-  },
-  methods: {
-    fetchData: async function() {
-      await axios
-        .get(`http://localhost:8181/api/clientes/${this.$route.params.id}`)
-        .then(response => (this.cliente = response.data))
-        .catch(error => alert("Ocorreu um erro ao obter a informação."));
-    }
-  }
+  components: { clientetab1, clientetab2, clientetab3 }
 };
 </script>

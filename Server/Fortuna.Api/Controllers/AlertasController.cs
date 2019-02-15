@@ -30,7 +30,7 @@ namespace Fortuna.Api.Controllers
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetById([FromRoute] int idCliente, int id)
         {
-            var item = await service.Find(idCliente, id);
+            var item = await service.Find(id);
             if (item == null)
             {
                 return NotFound();
@@ -63,13 +63,13 @@ namespace Fortuna.Api.Controllers
                 return BadRequest();
             }
 
-            var contactObj = await service.Find(idCliente, id);
+            var contactObj = await service.Find(id);
             if (contactObj == null)
             {
                 return NotFound();
             }
 
-            await service.Update(idCliente, item);
+            await service.Update(item);
             return NoContent();
         }
 
@@ -77,7 +77,7 @@ namespace Fortuna.Api.Controllers
         [ProducesResponseType(204)]
         public async Task<IActionResult> Delete([FromRoute] int idCliente, int id)
         {
-            await service.Remove(idCliente, id);
+            await service.Remove(id);
             return NoContent();
         }
     }
