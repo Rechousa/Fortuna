@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fortuna.Domain.Entities
 {
@@ -20,9 +22,14 @@ namespace Fortuna.Domain.Entities
 
         public string Convencao { get; set; }
 
-        public Cliente(int idCliente, string nome, string morada, string cidade, string codigoPostal, string telefone, string numeroContribuinte, string convencao)
+        public DateTime DataHora { get; set; }
+
+        public ICollection<Alerta> Alertas { get; set; }
+
+        public ICollection<Historico> Historico { get; set; }
+
+        public Cliente(string nome, string morada, string cidade, string codigoPostal, string telefone, string numeroContribuinte, string convencao)
         {
-            IdCliente = idCliente;
             Nome = nome;
             Morada = morada;
             Cidade = cidade;

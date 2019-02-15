@@ -20,9 +20,9 @@ namespace Fortuna.Services
             return _repository.GetAll(idCliente);
         }
 
-        public Task<Alerta> Find(int idCliente, int id)
+        public Task<Alerta> Find(int id)
         {
-            return _repository.Find(idCliente, id);
+            return _repository.Find(id);
         }
 
         public Task Add(int idCliente, Alerta item)
@@ -30,14 +30,14 @@ namespace Fortuna.Services
             return _repository.Add(idCliente, item);
         }
 
-        public Task Update(int idCliente, Alerta item)
+        public Task Update(Alerta item)
         {
-            return _repository.Update(idCliente, item);
+            return _repository.Update(item);
         }
 
-        public Task Remove(int idCliente, int id)
+        public Task Remove(int id)
         {
-            return _repository.Remove(idCliente, id);
+            return _repository.Remove(id);
         }
     }
 }
