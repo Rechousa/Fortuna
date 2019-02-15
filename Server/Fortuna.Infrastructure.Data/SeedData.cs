@@ -20,10 +20,16 @@ namespace Fortuna.Infrastructure.Data
                 var listaNomesProprios = new RandomListValuePersonName();
                 var listaNomesFamilia = new RandomListValuePersonSurname();
                 var listaConvencoes = new RandomListValuePersonConvencao();
+                var listaMorada = new RandomListValuePersonAddress();
+                var listaCidade = new RandomListValuePersonCity();
 
                 for (int i = 0; i < 50; i++)
                 {
-                    context.Clientes.Add(new Cliente($"{listaNomesProprios.GetRandomValue()} {listaNomesFamilia.GetRandomValue()}", "Rua da minha casa", "Morada", "4000-001", "919009090", "512345678", listaConvencoes.GetRandomValue()));
+                    var nome = $"{listaNomesProprios.GetRandomValue()} {listaNomesFamilia.GetRandomValue()}";
+                    var morada = listaMorada.GetRandomValue(new IRandomListValue<string>[] { listaNomesProprios, listaNomesFamilia });
+                    var cidade = $"{listaCidade.GetRandomValue()}";
+
+                    context.Clientes.Add(new Cliente(nome, morada, cidade, "4000-001", "919009090", "512345678", listaConvencoes.GetRandomValue()));
                 }
                 //context.Clientes.Add(new Cliente("João", "Rua da minha casa", "Morada", "4000-001", "969009090", "512345678", "Médis"));
                 //context.Clientes.Add(new Cliente("António", "Rua da minha casa", "Morada", "4000-001", "939009090", "512345678", "Médis"));
