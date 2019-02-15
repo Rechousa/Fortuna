@@ -8,7 +8,7 @@ namespace Fortuna.Infrastructure.Data
     {
         protected List<T> names = new List<T>();
 
-        public T GetRandomValue()
+        public virtual T GetRandomValue()
         {
             return names.PickRandom();
         }
