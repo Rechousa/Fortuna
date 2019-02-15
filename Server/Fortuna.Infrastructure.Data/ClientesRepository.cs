@@ -48,7 +48,7 @@ namespace Fortuna.Infrastructure.Data
 
         public Task Remove(int id)
         {
-            var item = Find(id);
+            var item = Find(id).Result;
 
             db.Remove(item);
             return db.SaveChangesAsync();
