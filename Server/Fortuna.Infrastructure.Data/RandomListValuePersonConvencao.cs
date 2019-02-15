@@ -1,6 +1,6 @@
 ﻿namespace Fortuna.Infrastructure.Data
 {
-    public class RandomListValuePersonConvencao : RandomListValue
+    public class RandomListValuePersonConvencao : RandomListValue<string>
     {
         public RandomListValuePersonConvencao()
         {

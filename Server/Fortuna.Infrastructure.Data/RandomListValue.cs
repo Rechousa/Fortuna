@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Fortuna.Infrastructure.Data
 {
-    public abstract class RandomListValue
+    public abstract class RandomListValue<T>
     {
-        protected List<string> names = new List<string>();
+        protected List<T> names = new List<T>();
 
-        public string GetRandomValue()
+        public T GetRandomValue()
         {
             return names.PickRandom();
         }
