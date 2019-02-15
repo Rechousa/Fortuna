@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Fortuna.Infrastructure.Data
 {
-    public abstract class RandomListValue<T>
+    public abstract class RandomListValue<T> : IRandomListValue<T>
     {
         protected List<T> names = new List<T>();
 
