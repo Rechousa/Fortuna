@@ -10,7 +10,7 @@ namespace Fortuna.Infrastructure.Data
     public static class SeedData
     {
         private const int NUMERO_CLIENTES = 50;
-        private const int NUMERO_ALERTAS_POR_CLIENTE = 20;
+        private const int NUMERO_ALERTAS_POR_CLIENTE = 3;
         private const int NUMERO_HISTORICO_POR_CLIENTE = 25;
 
         private readonly static Random random = new Random();

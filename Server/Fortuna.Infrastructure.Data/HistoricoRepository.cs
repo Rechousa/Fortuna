@@ -20,7 +20,7 @@ namespace Fortuna.Infrastructure.Data
 
         public Task<IEnumerable<Historico>> GetAll(int idCliente)
         {
-            return Task.FromResult(db.Historico.AsEnumerable());
+            return Task.FromResult(db.Historico.Where(t => t.IdCliente == idCliente).AsEnumerable());
         }
 
         public Task<Historico> Find(int id)
