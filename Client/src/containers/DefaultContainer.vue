@@ -21,6 +21,7 @@
       </AppSidebar>
       <main class="main">
         <Breadcrumb :list="list"/>
+        <Alerts/>
         <div class="container-fluid">
           <router-view></router-view>
         </div>
@@ -43,6 +44,7 @@
 <script>
 import nav from '@/_nav'
 import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
+import Alerts from '../views/Alert.vue'
 
 export default {
   name: 'DefaultContainer',
@@ -58,7 +60,8 @@ export default {
     SidebarToggler,
     SidebarHeader,
     SidebarNav,
-    SidebarMinimizer
+    SidebarMinimizer,
+    Alerts
   },
   data () {
     return {
