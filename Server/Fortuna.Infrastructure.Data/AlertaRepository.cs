@@ -20,7 +20,7 @@ namespace Fortuna.Infrastructure.Data
 
         public Task<IEnumerable<Alerta>> GetAll(int idCliente)
         {
-            return Task.FromResult(db.Alertas.AsEnumerable());
+            return Task.FromResult(db.Alertas.Where(t => t.IdCliente == idCliente).AsEnumerable());
         }
 
         public Task<Alerta> Find(int id)
