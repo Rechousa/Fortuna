@@ -11,6 +11,21 @@
       </b-col>
     </b-row>
     <!--/.row-->
+
+    <b-modal
+      title="Alertas"
+      class="modal-danger"
+      size="lg"
+      v-model="showAlertModal"
+      ok-only=""
+      ok-variant="danger"
+    >
+    <ul>
+        <li v-for="item in items">
+          {{item.descricao}}
+        </li>
+    </ul>
+    </b-modal>
   </div>
 </template>
 
@@ -24,9 +39,10 @@ export default {
   data: () => {
     return {
       items: [],
+      showAlertModal: false,
       fields: [
         { key: "descricao", label: "Descrição", sortable: true },
-        { key: "dataHora", sortable: true },
+        { key: "dataHora", sortable: true }
       ]
     };
   },
@@ -36,9 +52,18 @@ export default {
   methods: {
     fetchData: async function() {
       await axios
-        .get(`http://localhost:8181/api/clientes/${this.$route.params.id}/alertas`)
-        .then(response => (this.items = response.data))
-        .catch(error => alert("Ocorreu um erro ao obter a informação."));
+        .get(
+          `http://localhost:8181/api/clientes/${this.$route.params.id}/alertas`
+        )
+        .then(response => {
+          this.items = response.data;
+          this.showAlertModal = this.items.length > 0;
+        })
+        .catch(error => {
+          this.$store.dispatch("showErrorAlertAction", {
+            message: "Ocorreu um erro ao obter a informação."
+          });
+        });
     }
   }
 };

@@ -1,23 +1,5 @@
 <template>
   <div>
-    <div class="alerts-container">
-      <b-alert
-        :show="alertMode=='success' && dismissCountDown"
-        dismissible
-        v-bind:variant="alertMode"
-        @dismissed="dismissCountdown=0"
-        @dismiss-count-down="countDownChanged"
-      >
-        {{ alertMessage }}
-        <b-progress variant="info" :max="dismissSecs" :value="dismissCountDown" height="4px"></b-progress>
-      </b-alert>
-      <b-alert
-        :show="alertMode=='danger' && showDismissibleAlert"
-        dismissible
-        v-bind:variant="alertMode"
-        @dismissed="showDismissibleAlert=false"
-      >{{ alertMessage }}</b-alert>
-    </div>
     <b-row>
       <b-col sm="12">
         <b-form-group>
@@ -102,13 +84,11 @@
     <b-modal
       title="Eliminar cliente"
       v-model="isVisibleConfirmModal"
-      cancel-title='Cancelar'
+      cancel-title="Cancelar"
       ok-variant="danger"
-      ok-title='Eliminar'
+      ok-title="Eliminar"
       @ok="deleteRecord"
-    >
-      Tem a certeza que pretende eliminar o cliente "{{ cliente.nome }}" ?
-    </b-modal>
+    >Tem a certeza que pretende eliminar o cliente "{{ cliente.nome }}" ?</b-modal>
   </div>
 </template>
 
@@ -120,12 +100,6 @@ export default {
   data: () => {
     return {
       cliente: {},
-      dismissSecs: 10,
-      dismissCountDown: 0,
-      alertMode: "none",
-      alertMessage: "",
-      alertType: "success",
-      showDismissibleAlert: false,
       isVisibleConfirmModal: false
     };
   },
@@ -137,7 +111,11 @@ export default {
       await axios
         .get(`http://localhost:8181/api/clientes/${this.$route.params.id}`)
         .then(response => (this.cliente = response.data))
-        .catch(error => alert("Ocorreu um erro ao obter a informação."));
+        .catch(error => {
+          this.$store.dispatch("showErrorAlertAction", {
+            message: "Ocorreu um erro ao obter a informação."
+          });
+        });
     },
     saveData: async function() {
       await axios
@@ -146,34 +124,29 @@ export default {
           this.cliente
         )
         .then(response => {
-          this.alertMode = "success";
-          this.showDismissibleAlert = true;
-          this.dismissCountDown = this.dismissSecs;
-          this.alertMessage = "Cliente gravado com sucesso!";
+          this.$store.dispatch("showSuccessAlertAction", {
+            message: "Cliente gravado com sucesso!"
+          });
         })
         .catch(error => {
-          this.alertMode = "danger";
-          this.showDismissibleAlert = true;
-          this.dismissCountDown = this.dismissSecs;
-          this.alertMessage = "Ocorreu um erro ao gravar o cliente.";
+          this.$store.dispatch("showErrorAlertAction", {
+            message: "Ocorreu um erro ao gravar o cliente."
+          });
         });
     },
     deleteRecord: async function() {
       await axios
         .delete(`http://localhost:8181/api/clientes/${this.$route.params.id}`)
         .then(response => {
-          this.alertMode = "success";
-          this.showDismissibleAlert = true;
-          this.dismissCountDown = this.dismissSecs;
-          this.alertMessage = "Cliente eliminado com sucesso!";
-          
-          this.$router.push({ name: 'Clientes' });
+          this.$store.dispatch("showSuccessAlertAction", {
+            message: "Cliente eliminado com sucesso!"
+          });
+          this.$router.push({ name: "Clientes" });
         })
         .catch(error => {
-          this.alertMode = "danger";
-          this.showDismissibleAlert = true;
-          this.dismissCountDown = this.dismissSecs;
-          this.alertMessage = "Ocorreu um erro ao eliminar o cliente.";
+          this.$store.dispatch("showErrorAlertAction", {
+            message: "Ocorreu um erro ao eliminar o cliente."
+          });
         });
       this.isVisibleConfirmModal = false;
     },

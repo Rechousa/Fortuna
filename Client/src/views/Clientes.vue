@@ -54,7 +54,11 @@ export default {
       await axios
         .get("http://localhost:8181/api/clientes/")
         .then(response => (this.items = response.data))
-        .catch(error => alert("Ocorreu um erro ao obter a informação."));
+        .catch(error => {
+          this.$store.dispatch("showErrorAlertAction", {
+            message: "Ocorreu um erro ao obter a informação."
+          });
+        });
     }
   }
 };

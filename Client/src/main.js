@@ -8,11 +8,12 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-
-// todo
-// cssVars()
+import Vuex from 'vuex'
+import { store } from './store'
 
 Vue.use(BootstrapVue)
+
+Vue.use(Vuex)
 
 /* eslint-disable no-new */
 new Vue({
@@ -20,6 +21,7 @@ new Vue({
   router,
   template: '<App/>',
   components: {
-    App
-  }
+    App,
+  },
+  store
 })
