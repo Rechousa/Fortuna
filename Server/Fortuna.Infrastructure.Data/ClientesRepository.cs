@@ -39,8 +39,11 @@ namespace Fortuna.Infrastructure.Data
             record.Cidade = item.Cidade;
             record.CodigoPostal = item.CodigoPostal;
             record.Telefone = item.Telefone;
+            record.NumeroUtente = item.NumeroUtente;
             record.NumeroContribuinte = item.NumeroContribuinte;
-            record.Convencao = item.Convencao;
+            record.Email = item.Email;
+            record.NomeConvencao = item.NomeConvencao;
+            record.NumeroConvencao = item.NumeroConvencao;
 
             db.Update(record);
             return db.SaveChangesAsync();

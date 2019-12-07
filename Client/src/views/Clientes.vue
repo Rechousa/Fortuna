@@ -9,6 +9,9 @@
           caption="<i class='fa fa-align-justify'></i> Clientes"
         ></c-table>
       </b-col>
+      <b-col cols="6" sm="4" md="2" xl class="mb-3 mb-xl-0">
+        <b-button variant="primary" @click="novocliente">Novo cliente</b-button>
+      </b-col>
     </b-row>
     <!--/.row-->
   </div>
@@ -42,6 +45,7 @@ export default {
           label: "Nr. Contribuinte",
           sortable: true
         },
+        { key: "email", sortable: true },
         { key: "convencao", label: "Convenção", sortable: true }
       ]
     };
@@ -59,6 +63,9 @@ export default {
             message: "Ocorreu um erro ao obter a informação."
           });
         });
+    },
+    novocliente: async function() {
+     this.$router.push({ name: "novocliente" }); 
     }
   }
 };

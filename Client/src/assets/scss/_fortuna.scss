@@ -1,0 +1,54 @@
+$active-color: #eee;
+$white-color: #fff;
+$background-color-darker: rgb(47, 53, 58);
+$background-color: rgb(58, 66, 72);
+
+#alerts-container {
+    margin-top: 10px;
+    position: fixed;
+}
+
+body {
+  font-size: 1.1rem !important;
+  color: $white-color;
+}
+
+.form-control {
+  font-size: 1.1rem !important;
+  background-color: $background-color-darker;
+  color: $white-color;
+}
+
+.btn {
+  font-size: 1.1rem !important;
+}
+
+.form-control:focus {
+    background-color: #0f151a;
+    color: $active-color;
+  }
+
+.card {
+  background-color: $background-color-darker;
+}
+
+.card-header {
+    color: $background-color;
+}
+.tab-content {
+    background-color: $background-color;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus {
+    background-color: $background-color;
+    color: $active-color;
+}
+
+.nav-tabs .nav-link {
+  color: $white-color;
+}
+
+// Modal:
+.modal-content {
+    background-color: $background-color;
+}

@@ -10,12 +10,14 @@
             <b-tab title="Cliente" active>
               <clientetab1></clientetab1>
             </b-tab>
-            <b-tab title="Histórico">
-              <clientetab2></clientetab2>
-            </b-tab>
-            <b-tab title="Alertas">
-              <clientetab3></clientetab3>
-            </b-tab>
+            <div v-if="!isNew">
+              <b-tab title="Histórico">
+                <clientetab2></clientetab2>
+              </b-tab>
+              <b-tab title="Alertas">
+                <clientetab3></clientetab3>
+              </b-tab>
+            </div>
           </b-tabs>
         </div>
         <div></div>
@@ -32,6 +34,13 @@ import clientetab3 from "./base/ClienteTab3.vue";
 
 export default {
   name: "Cliente",
-  components: { clientetab1, clientetab2, clientetab3 }
+  components: { clientetab1, clientetab2, clientetab3 },
+  computed: {
+    isNew() {
+      const result = this.$route.params.id === "novo";
+      console.log("is new", result);
+      return result;
+    }
+  }
 };
 </script>

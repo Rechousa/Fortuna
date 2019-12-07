@@ -1,6 +1,18 @@
 <template>
   <b-card :header="caption">
-    <b-table :dark="dark" :hover="hover" :striped="striped" :bordered="bordered" :small="small" :fixed="fixed" responsive="sm" :items="items" :fields="captions" :current-page="currentPage" :per-page="perPage">
+    <b-table
+      :dark="dark"
+      :hover="hover"
+      :striped="striped"
+      :bordered="bordered"
+      :small="small"
+      :fixed="fixed"
+      responsive="sm"
+      :items="items"
+      :fields="captions"
+      :current-page="currentPage"
+      :per-page="perPage"
+    >
       <template slot="status" slot-scope="data">
         <b-badge :variant="getBadge(data.item.status)">{{data.item.status}}</b-badge>
       </template>
@@ -8,24 +20,28 @@
       <template slot="nome" slot-scope="data">
         <b-link :to="{ name: 'Cliente', params: { id: data.item.idCliente }}">{{data.item.nome}}</b-link>
       </template>
-
     </b-table>
     <nav>
-      <b-pagination :total-rows="totalRows" :per-page="perPage" v-model="currentPage" prev-text="Prev" next-text="Next" hide-goto-end-buttons/>
+      <b-pagination
+        :total-rows="totalRows"
+        :per-page="perPage"
+        v-model="currentPage"
+        prev-text="Prev"
+        next-text="Next"
+        hide-goto-end-buttons
+      />
     </nav>
   </b-card>
 </template>
 
 <script>
-
-
 export default {
-  name: 'c-table',
+  name: "c-table",
   inheritAttrs: false,
   props: {
     caption: {
       type: String,
-      default: 'Table'
+      default: "Table"
     },
     hover: {
       type: Boolean,
@@ -66,27 +82,36 @@ export default {
   },
   data: () => {
     return {
-      currentPage: 1,
-    }
+      currentPage: 1
+    };
   },
   computed: {
     items: function() {
-      const items =  this.tableData
-      return Array.isArray(items) ? items : items()
+      const items = this.tableData;
+      return Array.isArray(items) ? items : items();
     },
-    totalRows: function () { return this.getRowCount() },
-    captions: function() { return this.fields }
+    totalRows: function() {
+      return this.getRowCount();
+    },
+    captions: function() {
+      return this.fields;
+    }
   },
   methods: {
-    getBadge (status) {
-      return status === 'Active' ? 'success'
-        : status === 'Inactive' ? 'secondary'
-          : status === 'Pending' ? 'warning'
-            : status === 'Banned' ? 'danger' : 'primary'
+    getBadge(status) {
+      return status === "Active"
+        ? "success"
+        : status === "Inactive"
+        ? "secondary"
+        : status === "Pending"
+        ? "warning"
+        : status === "Banned"
+        ? "danger"
+        : "primary";
     },
-    getRowCount: function () {
-      return this.items.length
-    },
+    getRowCount: function() {
+      return this.items.length;
+    }
   }
-}
+};
 </script>

@@ -54,7 +54,8 @@ namespace Fortuna.Api
             app.UseCors(builder => builder
                 .WithOrigins("http://localhost:8080")
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .WithExposedHeaders("Location"));
 
             app.UseMvc();
         }

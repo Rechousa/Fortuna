@@ -48,8 +48,9 @@ namespace Fortuna.Api.Controllers
                 return BadRequest();
             }
             await service.Add(item);
-            return CreatedAtRoute("GetClientes", new { id = item.IdCliente }, item);
 
+            return new CreatedResult(Url.Action(nameof(GetById), new { id = item.IdCliente }), item);
+            //return CreatedAtRoute("GetClientes", new { id = item.IdCliente }, item);
         }
 
         [HttpPut("{id}")]

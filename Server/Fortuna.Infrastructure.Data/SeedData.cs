@@ -1,9 +1,7 @@
 ﻿using Fortuna.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Fortuna.Infrastructure.Data
 {
@@ -34,7 +32,7 @@ namespace Fortuna.Infrastructure.Data
                     var morada = listaMorada.GetRandomValue(new IRandomListValue<string>[] { listaNomesProprios, listaNomesFamilia });
                     var cidade = $"{listaCidade.GetRandomValue()}";
 
-                    var cliente = new Cliente(nome, morada, cidade, "4000-001", "919009090", "512345678", listaConvencoes.GetRandomValue());
+                    var cliente = new Cliente(nome, morada, cidade, "4000-001", "919009090", "512345678", "200900000", "email@server.com", listaConvencoes.GetRandomValue(), "12345");
 
                     context.Clientes.Add(cliente);
 

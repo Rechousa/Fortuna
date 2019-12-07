@@ -28,6 +28,11 @@ export default new Router({
           component: Clientes
         },
         {
+          path: 'clientes/novo',
+          name: 'novocliente',
+          component: Cliente
+        },
+        {
           path: 'clientes/:id',
           name: 'Cliente',
           component: Cliente
